@@ -2,7 +2,27 @@ import matplotlib.pyplot as plt
 
 
 def plot_annual_cycle(df, filepath=None):
+    """Plot the annual cycle of precipitation and temperature.
 
+    This function takes a DataFrame containing monthly average precipitation
+    and temperature data and generates a bar plot showing the annual cycle
+    of precipitation and a line plot showing the temperature.
+    The plot can be saved to a file if a filepath is provided.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame containing the monthly average precipitation and temperature
+        data. The DataFrame is expected to have the following columns:
+            'grid_point_elevation', 'pre', 'tmp', 'lon', and 'lat'.
+    filepath : str, optional
+        The filepath to save the plot image. If not specified, the plot will
+        not be saved. Default is None.
+
+    Returns
+    -------
+    The generated matplotlib Figure object representing the plot.
+    """
     z = df.grid_point_elevation
     df = df.loc['1981':'2010']
     df = df.groupby(df.index.month).mean()
