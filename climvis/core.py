@@ -80,6 +80,22 @@ def get_cru_timeseries(lon, lat):
 
 
 def get_googlemap_url(lon, lat, zoom=10):
+    """Generate a Google Map URL centered around the specified longitude
+    and latitude. The URL will display a map with the specified zoom level. 
+
+    Parameters
+    ----------
+    lon : float
+        the longitude
+    lat : float
+        the latitude
+    zoom : int, optional
+        the zoom level of the map. The default is 10.
+
+    Returns
+    -------
+    The URL of the Google Map displaying the specified latitude and longitude.
+    """
 
     dmap = DecoratedMap(lat=lat, lon=lon, zoom=zoom,
                         size_x=640, size_y=640,
@@ -110,6 +126,29 @@ def mkdir(path, reset=False):
 
 
 def write_html(lon, lat, directory=None, zoom=None):
+    """Generate an HTML file that includes a plot of the annual cycle and a
+    Google Map image centered around the specified location.
+    The HTML file is saved in the specified directory or a temporary directory
+    if none is provided.
+
+    Parameters
+    ----------
+    lon : float
+        the longitude
+    lat : float
+        the latitude
+    directory : str, optional
+        The directory where the HTML file and plot image will be saved. If
+        not specified, a temporary directory will be created. Default is None.
+    zoom : int, optional
+        the zoom level of the map. If not specified, the default zoom level
+        from the configuration file will be used. Default is None.
+
+    Returns
+    -------
+    str
+        The path to the generated HTML file.
+    """
 
     # Set defaults
     if directory is None:
